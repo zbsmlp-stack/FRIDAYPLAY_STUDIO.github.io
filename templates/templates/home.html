@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">Файлы</h1>
+
+<ul class="list-group">
+
+{% for file in files %}
+
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+
+        {{ file.filename }}
+
+        <div>
+
+            <a href="{{ url_for('download', file_id=file.id) }}" class="btn btn-primary btn-sm me-2">Скачать</a>
+
+            <a href="{{ url_for('comments', file_id=file.id) }}" class="btn btn-secondary btn-sm">Комментарии</a>
+
+        </div>
+
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}
